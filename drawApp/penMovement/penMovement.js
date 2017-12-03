@@ -1,4 +1,5 @@
-import { inBoundsActionsHandler } from "./inBoundsHandler"  
+import { inBoundsActionsHandler } from "./helpers/inBoundsHandler"
+import { loadEncodedParamsArray }   from "./helpers/loadEncodedParamsArray"
 
 // bytecodeArr, currentByte, canvasPositiveMax, canvasNegativeMax, state
 export function penMovement(bytecodeArr, currentByte, canvasPositiveMax, canvasNegativeMax, state) 
@@ -9,25 +10,9 @@ export function penMovement(bytecodeArr, currentByte, canvasPositiveMax, canvasN
   // if pen up, reports end point of move
   // if pen down, reports each movement
   // if pen leaves area while down, pen moves to up and position reported
-  let encodedParams = []
-  let decodedParams = []
   
-  // add values to params array until byte with MSB set
-  for (var byte = currentByte + 1; byte < bytecodeArr.length; byte++) {
-    if ((parseInt(bytecodeArr[byte], 16) & 0x80) == 128) {
-      break;
-    }
-    else
-    {
-      encodedParams.push(bytecodeArr[byte])
-    }
-  }
-
-  //decode params
-  for (var byte = 0; byte < encodedParams.length; byte += 2) {
-    let param = decoder(encodedParams[byte], encodedParams[byte + 1]);
-    decodedParams.push(param);
-  }
+  let encodedParams = loadEncodedParamsArray(currentByte, bytecodeArr);
+  let decodedParams = loadDecodedParamsArray(encodedParams);
   
 
   var penDownMoves = []
