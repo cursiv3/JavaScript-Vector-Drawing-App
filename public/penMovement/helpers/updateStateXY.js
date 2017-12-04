@@ -1,4 +1,4 @@
-export function updateStateXY(x, y) 
+export function updateStateXY(x, y, state) 
 {
   if(x != undefined)
     {

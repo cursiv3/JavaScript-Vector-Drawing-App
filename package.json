@@ -4,11 +4,18 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel ./public/drawApp -d lib"
   },
   "author": "Corey Lewis",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^3.9.1",
+    "webpack-dev-server": "^2.9.5"
   }
 }

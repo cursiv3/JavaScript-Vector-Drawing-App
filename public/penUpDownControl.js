@@ -1,4 +1,4 @@
-export function penUpDown(array, iter) 
+export function penUpDownControl(array, iter, state) 
 {
   var d = 0;
   if (array != null)

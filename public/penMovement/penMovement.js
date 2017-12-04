@@ -1,5 +1,8 @@
 import { inBoundsActionsHandler } from "./helpers/inBoundsHandler"
-import { loadEncodedParamsArray }   from "./helpers/loadEncodedParamsArray"
+import { loadEncodedParamsArray } from "./helpers/loadEncodedParamsArray"
+import { loadDecodedParamsArray } from "./helpers/loadDecodedParamsArray"
+import { updateStateXY } from "./helpers/updateStateXY"
+import { boundaryCheck } from "./helpers/boundaryCheck"
 
 // bytecodeArr, currentByte, canvasPositiveMax, canvasNegativeMax, state
 export function penMovement(bytecodeArr, currentByte, canvasPositiveMax, canvasNegativeMax, state) 
@@ -23,7 +26,7 @@ export function penMovement(bytecodeArr, currentByte, canvasPositiveMax, canvasN
     var fromY = state.y;
 
     // update state to xy we are moving to and make prettier variables
-    updateStateXY(decodedParams[byte], decodedParams[byte + 1]);
+    updateStateXY(decodedParams[byte], decodedParams[byte + 1], state);
     var toX = state.x;
     var toY = state.y;
 
@@ -34,22 +37,14 @@ export function penMovement(bytecodeArr, currentByte, canvasPositiveMax, canvasN
     
     // returns 'x' or 'y' if x/y out of bounds, otherwise returns null
     // sets state.inBounds to true/false accordingly
-    var outOfBound = boundaryCheck(state.x, state.y); 
+    var outOfBound = boundaryCheck(state.x, state.y, canvasPositiveMax, canvasNegativeMax); 
     
     // I use == bool so reading is quick and obvious and extra layer
     // of control on exactly what is going through
     // same with 'else if' instead of just 'else'
     if (state.inBounds == true) 
     {
-      let handlerArgsObj = {
-        fromX: fromX,
-        fromY: fromY,
-        slope: slope,
-        canvasPositiveMax: canvasPositiveMax,
-        canvasNegativeMax:canvasNegativeMax,
-        penDownMoves: penDownMoves
-      }
-      inBoundsActionsHandler(handlerArgsObj, state);
+      inBoundsActionsHandler(fromX, fromY, slope, canvasPositiveMax, canvasNegativeMax, penDownMoves, state);
     }
     else if (state.inBounds == false) 
     {

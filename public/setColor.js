@@ -1,3 +1,5 @@
+import { decoder } from "./decoder"
+
 export function setColor(array, idx, appState)
 // takes the index of the array where setColor was triggered
 // takes the next 8 indices for RGBA values

@@ -1,4 +1,3 @@
-import { decoder } from "./decoder"
 import { penUpDownControl } from "./penUpDownControl"
 import { setColor } from "./setColor"
 import { penMovement } from "./penMovement/penMovement"
@@ -47,7 +46,7 @@ function drawApp(dataStream)
           penMovement(bytecodeArr, currentByte, canvasPositiveMax, canvasNegativeMax, state);
           break;
         case '80': // pen up or down
-          penUpDownControl(bytecodeArr, currentByte);
+          penUpDownControl(bytecodeArr, currentByte, state);
           break;
       }
   }

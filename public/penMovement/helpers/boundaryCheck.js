@@ -1,4 +1,4 @@
-export function boundaryCheck(x, y) 
+export function boundaryCheck(x, y, canvasPositiveMax, canvasNegativeMax, state) 
 {
   if (x > canvasPositiveMax || x < canvasNegativeMax)
   {
