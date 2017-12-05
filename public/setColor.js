@@ -3,11 +3,8 @@ const decoder = require("./decoder");
 function setColor(
   array,
   idx,
-  state // takes the index of the array where setColor was triggered // takes the next 8 indices for RGBA values
-) // takes 8 because the data was regex'd into pairs
-// each pair is one byte, each parameter is two bytes
-// we need two indices per param, there are four params; 8 indices
-{
+  state // takes the index of the array where setColor was triggered // takes the next 8 indices for RGBA values // takes 8 because the data was regex'd into pairs // each pair is one byte, each parameter is two bytes
+) {
   var rgba = [];
   // loop to 8 by 2
   // idx is ref point in data stream where cmd called
@@ -26,6 +23,7 @@ function setColor(
     color: rgba
   });
   state.actions.push(color + ";");
+  return state;
 }
 
 module.exports = setColor;

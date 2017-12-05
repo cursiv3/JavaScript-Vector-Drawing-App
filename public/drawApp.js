@@ -36,7 +36,7 @@ function drawApp(dataStream) {
         state.actions.push("CLR;");
         break;
       case "A0": // set color
-        setColor(bytecodeArr, currentByte, state);
+        state = setColor(bytecodeArr, currentByte, state);
         break;
       case "C0": // pen move
         state = penMovement(
