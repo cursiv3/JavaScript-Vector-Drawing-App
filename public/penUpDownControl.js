@@ -11,12 +11,12 @@ export function penUpDownControl(array, iter, state)
   
   if (d != 0 || state.pen != 'DOWN') 
   {
-    state = Object.assign({}, state, { pen: 'DOWN' });
     state.actions.push('PEN DOWN;');
+    return Object.assign({}, state, { pen: 'DOWN'});
   } 
   else if (state.pen != 'UP') 
   {
-    state = Object.assign({}, state, { pen: 'UP' });
     state.actions.push('PEN UP;');
+    return Object.assign({}, state, { pen: 'UP'});
   }
 }

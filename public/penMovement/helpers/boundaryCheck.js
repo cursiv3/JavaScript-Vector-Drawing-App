@@ -1,18 +1,27 @@
+import { penUpDownControl } from "../../penUpDownControl";
+
 export function boundaryCheck(x, y, canvasPositiveMax, canvasNegativeMax, state) 
 {
+  var returnObj = {
+    outOfBounds: null,
+    state: state
+  }
   if (x > canvasPositiveMax || x < canvasNegativeMax)
   {
-    state = Object.assign({}, state, { inBounds: false })
-    return 'x';
+   return {
+      state: Object.assign({}, state, { inBounds: false }),
+     outOfBounds: 'x'
+    }
   }
   else if (y > canvasPositiveMax || y < canvasNegativeMax)
   {
-    console.log('y in outbound check: ', y)
-    state = Object.assign({}, state, { inBounds: false })
-    return 'y';
+    return {
+      state: Object.assign({}, state, { inBounds: false }),
+      outOfBounds: 'y'
+    }
   }
   else
   {
-    state = Object.assign({}, state, { inBounds: true })
+    return { state: Object.assign({}, state, { inBounds: true }) };
   }
 }

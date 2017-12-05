@@ -1,7 +1,8 @@
-export function rightToLeftHandler(argsObj, stateObj) {
-    let firstYinbound = Math.round((x1 - maxSizePos) * (mx * -1) + y1);
-    let xMax = setToBoundaryMax(x1);
-    stateObj.actions.push('MV (' + xMax + ', ' + firstYinbound + ')')
-    penUpDownControl(null);
-    downMoves.push('(' + stateObj.x + ', ' + stateObj.y + ')');
+import { setToBoundaryMax } from './setToBoundaryMax'
+
+export function rightToLeftHandler(fromX, fromY, slope, canvasPositiveMax, state) {
+    let firstYinbound = Math.round((fromX - canvasPositiveMax) * (slope * -1) + fromY);
+    let xMax = setToBoundaryMax(fromX, canvasPositiveMax);
+    state.actions.push('MV (' + xMax + ', ' + firstYinbound + ')');
+    return '(' + state.x + ', ' + state.y + ')';
 }

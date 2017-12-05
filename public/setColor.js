@@ -1,6 +1,6 @@
 import { decoder } from "./decoder"
 
-export function setColor(array, idx, appState)
+export function setColor(array, idx, state)
 // takes the index of the array where setColor was triggered
 // takes the next 8 indices for RGBA values
 // takes 8 because the data was regex'd into pairs 
@@ -19,10 +19,11 @@ export function setColor(array, idx, appState)
     let col = decoder(array[byte1], array[byte2]) 
     rgba.push(col);
   }
+
   // formatting for output, update state with new color and action performed
   let color = 'CO ' + rgba.join(' ');
-  appState = Object.assign({}, appState, {
+  state = Object.assign({}, state, {
     color: rgba
   })
-  appState.actions.push(color + ';');
+  state.actions.push(color + ';');
 }

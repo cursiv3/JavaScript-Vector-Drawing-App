@@ -15,7 +15,7 @@ function drawApp(dataStream)
   const canvasPositiveMax = 8191;
   const canvasNegativeMax = -8192;
   var state = {
-    pen: 'DOWN',
+    pen: 'UP',
     x: 0,
     y: 0,
     color: [0,0,0,255],
@@ -35,18 +35,18 @@ function drawApp(dataStream)
             pen: 'UP',
             x: 0,
             y: 0,
-            color: [0,0,0,255]
-          })
+            color: [0, 0, 0, 255]
+          });
           state.actions.push('CLR;');
           break;
         case 'A0': // set color
           setColor(bytecodeArr, currentByte, state);
           break;
         case 'C0': // pen move
-          penMovement(bytecodeArr, currentByte, canvasPositiveMax, canvasNegativeMax, state);
+          state = penMovement(bytecodeArr, currentByte, canvasPositiveMax, canvasNegativeMax, state);
           break;
         case '80': // pen up or down
-          penUpDownControl(bytecodeArr, currentByte, state);
+          state = penUpDownControl(bytecodeArr, currentByte, state);
           break;
       }
   }

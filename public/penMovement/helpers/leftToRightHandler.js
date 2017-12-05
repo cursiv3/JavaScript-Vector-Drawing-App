@@ -1,7 +1,7 @@
-export function leftToRightHandler(argsObj, stateObj) {
-    let lastYinbound = Math.round((stateObj.x - maxSizeNeg) * slope + stateObj.y);
-    let xMax = setToBoundaryMax(stateObj.x);
-    stateObj.actions.push('MV (' + xMax + ', ' + lastYinbound + ')');
-    penUpDownControl(null);
-    downMoves.push('(' + stateObj.x + ', ' + stateObj.y + ')');
+export function leftToRightHandler(fromX, fromY, slope, canvasNegativeMax, penDownMoves, state) {
+    let lastYinbound = Math.round((state.x - canvasNegativeMax) * slope + state.y);
+    let xMax = setToBoundaryMax(state.x);
+    state.actions.push('MV (' + xMax + ', ' + lastYinbound + ')');
+    penUpDownControl(null, null, state);
+    penDownMoves.push('(' + state.x + ', ' + state.y + ')');
 };

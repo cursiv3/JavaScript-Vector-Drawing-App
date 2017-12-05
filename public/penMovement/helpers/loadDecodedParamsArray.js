@@ -2,7 +2,7 @@ import { decoder } from "../../decoder";
 
 export function loadDecodedParamsArray(encodedParams) {
     let decodedParams = [];
-    for (var byte = 0; byte < encodedParams.length; byte += 2) {
+    for (var byte = 0; byte < encodedParams.length ; byte += 2) {
         let param = decoder(encodedParams[byte], encodedParams[byte + 1]);
         decodedParams.push(param);
     }
