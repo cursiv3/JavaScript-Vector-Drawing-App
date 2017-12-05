@@ -1,12 +1,11 @@
-export function updateStateXY(x, y, state) 
-{
-  if(x != undefined)
-    {
+function updateStateXY(x, y, state) {
+  if (x != undefined) {
     state = Object.assign({}, state, { x: state.x + x });
-    }
-  if (y != undefined)
-    {
+  }
+  if (y != undefined) {
     state = Object.assign({}, state, { y: state.y + y });
   }
-  return state
+  return state;
 }
+
+module.exports = updateStateXY;

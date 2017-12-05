@@ -1,7 +1,9 @@
 const setToBoundaryMax = require("./setToBoundaryMax");
-import { penUpDownControl } from "../../penUpDownControl";
+const penUpDownControl = require("../../penUpDownControl");
+const x_outOfBoundHandler = require("./x_outOfBoundHandler");
+const y_outOfBoundHandler = require("./y_outOfBoundHandler");
 
-export function outOfBoundsActionsHandler(
+function outOfBoundsActionsHandler(
   outOfBounds,
   slope,
   canvasPositiveMax,
@@ -11,54 +13,49 @@ export function outOfBoundsActionsHandler(
   switch (outOfBounds) {
     case "x":
       if (state.x > canvasPositiveMax) {
-        let lastYinbound = Math.round(
-          (state.x - canvasPositiveMax) * slope + state.y
-        );
-        let xMax = setToBoundaryMax(
-          state.x,
+        let boundCrossed = canvasPositiveMax;
+        let newState = x_outOfBoundHandler(
+          slope,
+          boundCrossed,
           canvasPositiveMax,
-          canvasNegativeMax
+          canvasNegativeMax,
+          state
         );
-        state.actions.push("MV (" + xMax + ", " + lastYinbound + ")");
-        return penUpDownControl(null, null, state);
+        return newState;
       } else if (state.x < canvasNegativeMax) {
-        let lastYinbound = Math.round(
-          (state.x - canvasNegativeMax) * slope + state.y
-        );
-        let xMax = setToBoundaryMax(
-          state.x,
+        let boundCrossed = canvasNegativeMax;
+        let newState = x_outOfBoundHandler(
+          slope,
+          boundCrossed,
           canvasPositiveMax,
-          canvasNegativeMax
+          canvasNegativeMax,
+          state
         );
-        state.actions.push("MV (" + xMax + ", " + lastYinbound + ")");
-        return penUpDownControl(null, null, state);
-        break;
+        return newState;
       }
     case "y":
       if (state.y > canvasPositiveMax) {
-        let lastXinbound = Math.round(
-          (state.y - canvasPositiveMax) * slope + state.x
-        );
-        let yMax = setToBoundaryMax(
-          state.x,
+        let boundCrossed = canvasPositiveMax;
+        let newState = y_outOfBoundHandler(
+          slope,
+          boundCrossed,
           canvasPositiveMax,
-          canvasNegativeMax
+          canvasNegativeMax,
+          state
         );
-        state.actions.push("MV (" + lastXinbound + ", " + yMax + ")");
-        return penUpDownControl(null, null, state);
-        break;
+        return newState;
       } else if (state.y < canvasNegativeMax) {
-        let lastXinbound = Math.round(
-          (state.y - canvasNegativeMax) * slope + state.x
-        );
-        let yMax = setToBoundaryMax(
-          state.x,
+        let boundCrossed = canvasNegativeMax;
+        let newState = y_outOfBoundHandler(
+          slope,
+          boundCrossed,
           canvasPositiveMax,
-          canvasNegativeMax
+          canvasNegativeMax,
+          state
         );
-        state.actions.push("MV (" + lastXinbound + ", " + yMax + ")");
-        return penUpDownControl(null);
-        break;
+        return newState;
       }
   }
 }
+
+module.exports = outOfBoundsActionsHandler;
