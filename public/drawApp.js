@@ -4,7 +4,7 @@ const penMovement = require("./penMovement/penMovement");
 //var stream = "F0A040004000417F417FC04000400090400047684F5057384000804001C05F204000400001400140400040007E405B2C4000804000"
 //var stream = "F0A04000417F4000417FC040004000804001C05F205F20804000"
 //var stream ="F0A0417F40004000417FC067086708804001C0670840004000187818784000804000"
-var stream = "F0A0417F41004000417FC067086708804001C067082C3C18782C3C804000";
+//var stream = "F0A0417F41004000417FC067086708804001C067082C3C18782C3C804000";
 
 function drawApp(dataStream) {
   // =======================   GLOBAL VARS   =======================
@@ -52,8 +52,13 @@ function drawApp(dataStream) {
         break;
     }
   }
-  console.log(state.actions.join("\n"));
-  return state.actions.join("\n");
+  var mainDiv = document.getElementById("main");
+  state.actions.map(function(val, idx) {
+    var paragraph = document.createElement("p");
+    paragraph.setAttribute("style", "text-align: left");
+    paragraph.innerHTML = state.actions[idx];
+    return mainDiv.appendChild(paragraph);
+  });
 }
 
-drawApp(stream);
+module.exports = { drawApp: drawApp };
