@@ -10,8 +10,8 @@ function penMovement(
   currentByte,
   canvasPositiveMax,
   canvasNegativeMax,
-  state
-) {
+  state) 
+{
   /* 
   records variable number of args following a move cmd decodes args
   takes pairs of decoded args as X Y
@@ -25,7 +25,8 @@ function penMovement(
 
   var penDownMoves = [];
 
-  for (var byte = 0; byte < decodedParams.length; byte += 2) {
+  for (var byte = 0; byte < decodedParams.length; byte += 2) 
+  {
     // store current state as xy we are moving from
     var fromX = state.x;
     var fromY = state.y;
@@ -37,9 +38,12 @@ function penMovement(
     // "I'm never going to use this, why am I learning it?" -13 year old me
     var rise = Math.abs(fromY + toY * -1);
     var run = Math.abs(fromX + toX * -1);
-    if (run == 0) {
+    if (run == 0) 
+    {
       var slope = 0;
-    } else {
+    } 
+    else 
+    {
       var slope = rise / run;
     }
     // returns 'x' or 'y' if x/y out of bounds, otherwise returns null
@@ -49,8 +53,8 @@ function penMovement(
       state.y,
       canvasPositiveMax,
       canvasNegativeMax,
-      state
-    );
+      state);
+
     state = boundaryCheckObject.state;
 
     var outOfBounds = boundaryCheckObject.outOfBounds;
@@ -58,7 +62,8 @@ function penMovement(
     // I use == bool so reading is quick and obvious and extra layer
     // of control on exactly what is going through
     // same with 'else if' instead of just 'else'
-    if (state.inBounds == true) {
+    if (state.inBounds == true) 
+    {
       // inBoundsActionsHandler pushes xy move pair to state.actions if pen state is UP
       // otherwise it returns a formatted xy movement pair to be added to penDownMoves tracker array
       var newStateAndActions = inBoundsActionsHandler(
@@ -69,23 +74,26 @@ function penMovement(
         slope,
         canvasPositiveMax,
         canvasNegativeMax,
-        state
-      );
+        state);
+
       penDownMoves.push(newStateAndActions.penDownMoves);
       state = newStateAndActions.state;
-    } else if (state.inBounds == false) {
+    } 
+    else if (state.inBounds == false) 
+    {
       state = outOfBoundsActionsHandler(
         outOfBounds,
         slope,
         canvasPositiveMax,
         canvasNegativeMax,
-        state
-      );
+        state);
     }
   }
-  if (penDownMoves[0] != undefined) {
+  if (penDownMoves[0] != undefined) 
+  {
     state.actions.push("MV " + penDownMoves.join(" ") + ";");
   }
+  
   return state;
 }
 

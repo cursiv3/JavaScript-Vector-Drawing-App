@@ -7,8 +7,10 @@ var expect = chai.expect,
   positiveMax = 8191,
   negativeMax = -8192;
 
-describe("x_outOfBoundHandler", function() {
-  it("should return an object", function() {
+describe("x_outOfBoundHandler", function() 
+{
+  it("should return an object", function() 
+  {
     var stateObj = {
       actions: [],
       x: positiveMax + 1,
@@ -27,7 +29,8 @@ describe("x_outOfBoundHandler", function() {
     expect(OOB).to.be.a("object");
   });
 
-  it("should push positiveMax and last Y in bounds to actions when x > positiveMax", function() {
+  it("should push positiveMax and last Y in bounds to actions when x > positiveMax", function() 
+  {
     var stateObj = {
       actions: [],
       x: positiveMax + 1,
@@ -44,11 +47,12 @@ describe("x_outOfBoundHandler", function() {
         negativeMax,
         stateObj
       ).actions[0],
-      "MV (" + positiveMax + ", " + lastYIn + ")"
+      "MV (" + positiveMax + ", " + lastYIn + ");"
     );
   });
 
-  it("should push negativeMax and last Y in bounds to actions when x < negativeMax", function() {
+  it("should push negativeMax and last Y in bounds to actions when x < negativeMax", function() 
+  {
     var stateObj = {
       actions: [],
       x: negativeMax - 1,
@@ -65,7 +69,7 @@ describe("x_outOfBoundHandler", function() {
         negativeMax,
         stateObj
       ).actions[0],
-      "MV (" + negativeMax + ", " + lastYIn + ")"
+      "MV (" + negativeMax + ", " + lastYIn + ");"
     );
   });
 });

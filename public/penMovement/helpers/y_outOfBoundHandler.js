@@ -6,11 +6,12 @@ function y_outOfBoundHandler(
   boundCrossed,
   canvasPositiveMax,
   canvasNegativeMax,
-  state
-) {
+  state)
+  {
   let lastXinbound = Math.round((state.y - boundCrossed) * slope + state.x);
   let yMax = setToBoundaryMax(state.y, canvasPositiveMax, canvasNegativeMax);
-  state.actions.push("MV (" + lastXinbound + ", " + yMax + ")");
+  state.actions.push("MV (" + lastXinbound + ", " + yMax + ");");
+  
   return penUpDownControl(null, null, state);
 }
 module.exports = y_outOfBoundHandler;

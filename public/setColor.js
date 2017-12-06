@@ -19,7 +19,8 @@ function setColor(array, idx, state)
   let color = "CO " + rgba.join(" ");
   state = Object.assign({}, state, {
     color: rgba
-  });
+  }
+);
   state.actions.push(color + ";");
   return state;
 }

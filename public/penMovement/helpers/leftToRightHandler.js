@@ -4,8 +4,8 @@ function leftToRightHandler(
   slope,
   canvasNegativeMax,
   penDownMoves,
-  state
-) {
+  state)
+  {
   let lastYinbound = Math.round(
     (state.x - canvasNegativeMax) * slope + state.y
   );

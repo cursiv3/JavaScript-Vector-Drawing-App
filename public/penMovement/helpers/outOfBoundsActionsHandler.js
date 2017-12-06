@@ -8,53 +8,62 @@ function outOfBoundsActionsHandler(
   slope,
   canvasPositiveMax,
   canvasNegativeMax,
-  state
-) {
-  switch (outOfBounds) {
+  state) 
+  {
+  switch (outOfBounds) 
+  {
+
     case "x":
-      if (state.x > canvasPositiveMax) {
-        let boundCrossed = canvasPositiveMax;
-        let newState = x_outOfBoundHandler(
-          slope,
-          boundCrossed,
-          canvasPositiveMax,
-          canvasNegativeMax,
-          state
-        );
-        return newState;
-      } else if (state.x < canvasNegativeMax) {
-        let boundCrossed = canvasNegativeMax;
-        let newState = x_outOfBoundHandler(
-          slope,
-          boundCrossed,
-          canvasPositiveMax,
-          canvasNegativeMax,
-          state
-        );
-        return newState;
-      }
+    if (state.x > canvasPositiveMax) 
+    {
+      let boundCrossed = canvasPositiveMax;
+      let newState = x_outOfBoundHandler(
+      slope,
+      boundCrossed,
+      canvasPositiveMax,
+      canvasNegativeMax,
+      state);
+      
+      return newState;
+    } 
+    else if (state.x < canvasNegativeMax) 
+    {
+      let boundCrossed = canvasNegativeMax;
+      let newState = x_outOfBoundHandler(
+      slope,
+      boundCrossed,
+      canvasPositiveMax,
+      canvasNegativeMax,
+      state);
+
+      return newState;
+    }
+
     case "y":
-      if (state.y > canvasPositiveMax) {
-        let boundCrossed = canvasPositiveMax;
-        let newState = y_outOfBoundHandler(
-          slope,
-          boundCrossed,
-          canvasPositiveMax,
-          canvasNegativeMax,
-          state
-        );
-        return newState;
-      } else if (state.y < canvasNegativeMax) {
-        let boundCrossed = canvasNegativeMax;
-        let newState = y_outOfBoundHandler(
-          slope,
-          boundCrossed,
-          canvasPositiveMax,
-          canvasNegativeMax,
-          state
-        );
-        return newState;
-      }
+    if (state.y > canvasPositiveMax) 
+    {
+      let boundCrossed = canvasPositiveMax;
+      let newState = y_outOfBoundHandler(
+      slope,
+      boundCrossed,
+      canvasPositiveMax,
+      canvasNegativeMax,
+      state);
+
+      return newState;
+    } 
+    else if (state.y < canvasNegativeMax) 
+    {
+      let boundCrossed = canvasNegativeMax;
+      let newState = y_outOfBoundHandler(
+      slope,
+      boundCrossed,
+      canvasPositiveMax,
+      canvasNegativeMax,
+      state);
+          
+      return newState;
+    }
   }
 }
 

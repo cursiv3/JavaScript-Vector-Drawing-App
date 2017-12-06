@@ -44,7 +44,7 @@ describe("y_outOfBoundHandler", function() {
         negativeMax,
         stateObj
       ).actions[0],
-      "MV (" + lastXIn + ", " + positiveMax + ")"
+      "MV (" + lastXIn + ", " + positiveMax + ");"
     );
   });
 
@@ -65,7 +65,7 @@ describe("y_outOfBoundHandler", function() {
         negativeMax,
         stateObj
       ).actions[0],
-      "MV (" + lastXIn + ", " + negativeMax + ")"
+      "MV (" + lastXIn + ", " + negativeMax + ");"
     );
   });
 });

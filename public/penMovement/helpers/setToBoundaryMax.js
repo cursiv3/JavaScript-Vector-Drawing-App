@@ -1,9 +1,15 @@
-function setToBoundaryMax(val, canvasPositiveMax, canvasNegativeMax) {
-  if (val >= canvasPositiveMax) {
+function setToBoundaryMax(val, canvasPositiveMax, canvasNegativeMax) 
+{
+  if (val >= canvasPositiveMax) 
+  {
     return canvasPositiveMax;
-  } else if (val <= canvasNegativeMax) {
+  } 
+  else if (val <= canvasNegativeMax) 
+  {
     return canvasNegativeMax;
-  } else {
+  } 
+  else 
+  {
     return val;
   }
 }
