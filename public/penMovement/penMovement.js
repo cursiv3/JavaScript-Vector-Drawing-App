@@ -29,7 +29,6 @@ function penMovement(
     // store current state as xy we are moving from
     var fromX = state.x;
     var fromY = state.y;
-
     state = updateStateXY(decodedParams[byte], decodedParams[byte + 1], state);
 
     var toX = state.x;
@@ -38,8 +37,11 @@ function penMovement(
     // "I'm never going to use this, why am I learning it?" -13 year old me
     var rise = Math.abs(fromY + toY * -1);
     var run = Math.abs(fromX + toX * -1);
-    var slope = rise / run;
-
+    if (run == 0) {
+      var slope = 0;
+    } else {
+      var slope = rise / run;
+    }
     // returns 'x' or 'y' if x/y out of bounds, otherwise returns null
     // sets state.inBounds to true/false accordingly
     var boundaryCheckObject = boundaryCheck(

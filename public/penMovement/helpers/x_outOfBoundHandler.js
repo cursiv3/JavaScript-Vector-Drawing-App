@@ -10,7 +10,7 @@ function x_outOfBoundHandler(
 ) {
   let lastYinbound = Math.round((state.x - boundCrossed) * slope + state.y);
   let xMax = setToBoundaryMax(state.x, canvasPositiveMax, canvasNegativeMax);
-  state.actions.push("MV (" + xMax + ", " + lastYinbound + ")");
+  state.actions.push("MV (" + xMax + ", " + lastYinbound + ");");
   return penUpDownControl(null, null, state);
 }
 

@@ -53,12 +53,14 @@ function drawApp(dataStream) {
     }
   }
   var mainDiv = document.getElementById("main");
+  var resultsDiv = document.createElement("div");
+  resultsDiv.setAttribute("style", "border: 2px solid black; margin: 3px;");
   state.actions.map(function(val, idx) {
     var paragraph = document.createElement("p");
-    paragraph.setAttribute("style", "text-align: left");
     paragraph.innerHTML = state.actions[idx];
-    return mainDiv.appendChild(paragraph);
+    return resultsDiv.appendChild(paragraph);
   });
+  mainDiv.appendChild(resultsDiv);
 }
 
 module.exports = { drawApp: drawApp };
