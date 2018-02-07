@@ -16,8 +16,7 @@ C0 - Move pen, C0 followed by N number of pairs (X and Y)
 
 To Install:
 
-1. mkdir js-draw-app
-2. git clone <this repo url>
-3. cd JavaScript-Vector-Drawing-App
-4. npm i
-5. npm run start
+1. git clone "this repo clone url"
+2. cd JavaScript-Vector-Drawing-App
+3. npm i
+4. npm run start
