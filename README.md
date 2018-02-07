@@ -9,10 +9,10 @@ enters the page so long as the last command was still to draw.
 Bytecode is as follows:
 
 Commands:
-F0 - clear the drawing, reset workspace
-A0 - Set Color, A0 must be followed by 8 bytes of hex values for color
-C0 - Move pen, C0 followed by N number of pairs (X and Y)
-80 - Pen up/down control
+- F0 clear the drawing, reset workspace- 
+- A0 Set Color, A0 must be followed by 8 bytes of hex values for color
+- C0 Move pen, C0 followed by N number of pairs (X and Y)
+- 80 Pen up/down control
 
 To Install:
 
